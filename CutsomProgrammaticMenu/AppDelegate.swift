@@ -7,18 +7,32 @@
 //
 
 import UIKit
+import MOLH
+import IQKeyboardManager
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
+    func reset() {
+        window?.rootViewController = UINavigationController(rootViewController:  DashboardVC())
+    }
+    
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        GMSServices.provideAPIKey("AIzaSyAnKvay92-zyf4Or37UL6tsEF7BL8PiC6U")
+        GMSPlacesClient.provideAPIKey("AIzaSyAnKvay92-zyf4Or37UL6tsEF7BL8PiC6U")
+
+        IQKeyboardManager.shared().isEnabled = true
+        MOLH.shared.activate(true)
+        window?.rootViewController = UINavigationController(rootViewController:  DashboardVC())
         // Override point for customization after application launch.
         return true
     }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -27,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        UserDefaults.standard.set(false, forKey: "AnimationDoneLoading")
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -39,7 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        UserDefaults.standard.setValue(false, forKey: "AnimationDoneLoading")
     }
+    
 
 
 }

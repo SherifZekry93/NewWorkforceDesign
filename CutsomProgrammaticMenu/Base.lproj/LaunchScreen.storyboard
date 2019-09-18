@@ -1,25 +1,73 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JtI-ud-pEm">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="EHf-IW-A2E">
+        <scene sceneID="KkV-Rd-R9n">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="JtI-ud-pEm" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OSC-le-1ND">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgraound" translatesAutoresizingMaskIntoConstraints="NO" id="Eae-00-Jj9">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="kyc-YP-UuM">
+                                <rect key="frame" x="37" y="236" width="339" height="144.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="kyc-YP-UuM" secondAttribute="height" multiplier="75:32" id="ap5-fS-gJj"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ASIS Attendance App" translatesAutoresizingMaskIntoConstraints="NO" id="ti7-15-CLt">
+                                <rect key="frame" x="97" y="388.5" width="219" height="36.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ti7-15-CLt" secondAttribute="height" multiplier="6:1" id="qRj-X0-IUC"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="All rights reserved © ASIS" translatesAutoresizingMaskIntoConstraints="NO" id="JhR-Da-oAp">
+                                <rect key="frame" x="87" y="812" width="239" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="JhR-Da-oAp" secondAttribute="height" multiplier="8:1" id="9jf-sZ-ere"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <constraints>
+                            <constraint firstItem="ti7-15-CLt" firstAttribute="leading" secondItem="bG4-Zr-BnK" secondAttribute="leading" constant="97" id="5eY-qw-5gU"/>
+                            <constraint firstAttribute="bottom" secondItem="Eae-00-Jj9" secondAttribute="bottom" id="8m7-JN-IP5"/>
+                            <constraint firstItem="JhR-Da-oAp" firstAttribute="leading" secondItem="bG4-Zr-BnK" secondAttribute="leading" constant="87" id="Dl0-88-F12"/>
+                            <constraint firstItem="bG4-Zr-BnK" firstAttribute="trailing" secondItem="ti7-15-CLt" secondAttribute="trailing" constant="98" id="OUH-qy-8F4"/>
+                            <constraint firstItem="ti7-15-CLt" firstAttribute="top" secondItem="kyc-YP-UuM" secondAttribute="bottom" constant="8" id="ZGq-EN-6Pu"/>
+                            <constraint firstItem="bG4-Zr-BnK" firstAttribute="bottom" secondItem="JhR-Da-oAp" secondAttribute="bottom" constant="20" id="ZeJ-wW-czU"/>
+                            <constraint firstItem="Eae-00-Jj9" firstAttribute="top" secondItem="OSC-le-1ND" secondAttribute="top" id="a2R-39-tnB"/>
+                            <constraint firstItem="Eae-00-Jj9" firstAttribute="trailing" secondItem="bG4-Zr-BnK" secondAttribute="trailing" id="gFp-Il-VxH"/>
+                            <constraint firstItem="kyc-YP-UuM" firstAttribute="top" secondItem="bG4-Zr-BnK" secondAttribute="top" constant="192" id="hBt-Xn-nSs"/>
+                            <constraint firstItem="bG4-Zr-BnK" firstAttribute="trailing" secondItem="kyc-YP-UuM" secondAttribute="trailing" constant="38" id="jNX-uK-UPD"/>
+                            <constraint firstItem="kyc-YP-UuM" firstAttribute="leading" secondItem="bG4-Zr-BnK" secondAttribute="leading" constant="37" id="jzC-eE-8sx"/>
+                            <constraint firstItem="Eae-00-Jj9" firstAttribute="leading" secondItem="bG4-Zr-BnK" secondAttribute="leading" id="r1S-EG-aOR"/>
+                            <constraint firstItem="bG4-Zr-BnK" firstAttribute="trailing" secondItem="JhR-Da-oAp" secondAttribute="trailing" constant="88" id="zBT-r1-zbK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bG4-Zr-BnK"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qeP-Rd-Ywg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="50.724637681159422" y="374.33035714285711"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ASIS Attendance App" width="570" height="91"/>
+        <image name="All rights reserved © ASIS" width="473" height="71"/>
+        <image name="backgraound" width="1080" height="1920"/>
+        <image name="logo" width="850" height="288"/>
+    </resources>
 </document>

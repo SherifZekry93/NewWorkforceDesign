@@ -1,0 +1,148 @@
+/* 
+  Localize.strings
+  CutsomProgrammaticMenu
+
+  Created by Sherif  Wagih on 9/16/19.
+  Copyright © 2019 Sherif  Wagih. All rights reserved.
+*/
+"error" = "Error";
+"userNameEmpty" = "Enter User Name";
+"passFieldEmpty" = "Enter Password";
+"wrongUNorPass" = "Wrong User Name or Password";
+"networkError" = "Error in your internet connection";
+"warning" = "Warning";
+"locationRequestSent" = "Location Request Sent Successfully";
+"permisions" = "Permissions";
+"vacations" = "Vacations";
+"warning" = "Warning";
+"noPendingVacaions" = "No Pending Vacations";
+"calendar" = "Calendar";
+"permission" = "Permission";
+"vacation" = "Vacation";
+"Attendance" = "Attendace";
+"chooseDate" = "Please Choose Date Correctly";
+"noAttendance" = "No Attendance";
+"teamAttend" = "Team Attendance";
+"chooseRequType" = "Choose Reason";
+"serverError" = "Server Error";
+"pending" = "Pending";
+"myAttendance" = "My Attendance";
+"noPermission" = "You don't have permission";
+"Language" = "Language";
+"SAVE" =  "Save";
+"Base URL" = "Enter your base URL";
+"Login" = "Login";
+"E-mail" = "E-mail";
+"Requests" = "Requests";
+"Attendance" = "Attendance";
+"Check in" = "Check in";
+"Check out" = "Check out";
+"Calendar" = "Calendar";
+"Settings" = "Settings";
+"About" = "About";
+"Logout" = "Logout";
+"Absent" = "Absent";
+"Weekend" = "Weekend";
+"Attend" = "Attend";
+"Private Holiday" = "Private Holiday";
+"Public Holiday" = "Public Holiday";
+
+"Select Date" = "Select Date";
+"Date Start And End" =  "Date Start And End";
+"Vacation Type" = "Vacation Type";
+"Submit" = "Submit";
+"Remarks" = "Remarks";
+"Vacation" = "Vacation";
+"Time Start And End" = "Time Start And End";
+"Permission Type" = "Permission Type";
+"Notes" = "Notes";
+"Permission" = "Permission";
+"From Date:" = "From Date:";
+"To Date:" = "To Date:";
+"Something went wrong. Please check your connection and try again!" = "Something went wrong. Please check your connection and try again!";
+"You are not connected to the internet" = "You are not connected to the internet, please press check in again once you are connected!";
+"Failed to load permission types. Please try again!" = "Failed to load permission types. Please try again!";
+
+"Must enter a valid note" = "Must enter a valid note";
+
+
+"You must select a date" = "You must select a date";
+
+"To date can't be less than from date" = "To date can't be less than from date";
+
+
+"From date can't be greater than to date" = "From date can't be greater than to date";
+
+"Select Type" = "Select Type";
+
+"Loading Permissions" = "Loading Permissions";
+
+"Loading Vacations" = "Loading Vacations";
+
+
+"No Pending Requests" = "No Pending Requests";
+
+"Request was approved" = "Request was approved";
+
+
+"Something went wrong" = "Something went wrong";
+
+"Removing Request" = "Removing Request";
+
+"Getting Team Attendance" = "Getting Team Attendance";
+"Date can't be greater than today" = "Date can't be greater than today";
+
+"We couldn't find your destination contact your manager" = "We couldn't find your destination contact your manager";
+
+
+"You already checked in today!" = "You already checked in today!";
+
+"Your Destination" = "Your Destination";
+"Warning!" = "Warning!";
+
+"We can't check you in because you are far away from your destination get closer and try again!" = "We can't check you in because you are far away from your destination get closer and try again!";
+"We need to confirm your identity!" = "We need to confirm your identity!";
+
+"You need to verity your identity or else we can't check you in!" = "You need to verity your identity or else we can't check you in!";
+
+
+"You checked in Successfully!" = "You checked in Successfully!";
+
+"You checked Out Successfully!" = "You checked Out Successfully!";
+"Try Again!" = "Try Again!";
+
+
+"Pending Requests" = "Pending Requests";
+"My Attendance" = "My Attendance";
+"About" = "About";
+
+
+"Select Language" = "Select Language";
+
+
+"Continue" = "Continue";
+
+"Invalid URL" = "Invalid URL";
+
+
+"Welcome" = "Welcome";
+
+"Please Login To Continue" = "Please Login To Continue";
+
+"Username" = "Username";
+
+"Password" = "Password";
+
+"Dashboard" = "Dashboard";
+
+"Same url as before" = "Same URL as before";
+
+
+"Yes" = "Yes";
+
+"No" = "No";
+
+"You are logged in, if you change url you will logged out?" = "You are logged in, if you change url you will logged out?";
+
+
+"Getting your destination" = "Getting your destination";

@@ -1,0 +1,156 @@
+/* 
+  Localize.strings
+  CutsomProgrammaticMenu
+
+  Created by Sherif  Wagih on 9/16/19.
+  Copyright © 2019 Sherif  Wagih. All rights reserved.
+*/
+"error" = "خطأ";
+"userNameEmpty" = "أدخل اسم المستخدم";
+"passFieldEmpty" = "أدخل كلمة المرور";
+"wrongUNorPass" = "خطأ باسم المستخدم او كلمة المرور";
+"networkError" = "خطأ في اتصالك بالأنترنت";
+"warning" = "تنبيه";
+"locationRequestSent" = "تم ارسال طلب تحديد الموقع بنجاح";
+"permisions" = "الأذونات";
+"vacations" = "الأجازات";
+"warning" = "تنبيه";
+"noPendingVacaions" = "لا توجد طلبات أجازة";
+"calendar" = "النتيجة";
+"permission" = "أذن";
+"vacation" = "أجازة";
+"Attendance" = "الغياب";
+"chooseDate" = "أختار تاريخ صحيح";
+"noAttendance" = "لا يوجد غياب";
+"teamAttend" = "غياب الفريق";
+"chooseRequType" = "أختر نوع العذر";
+"serverError" = "خطأ بالخادم";
+"pending" = "المعلقة";
+"myAttendance" = "غيابي";
+"noPermission" = "أنت لاتملك الصلاحيات";
+"Language" = "اللغة";
+"SAVE" =  "حفظ";
+"Base URL" = "آدخل الرابط الخاص بك";
+"Login" = "تسجيل الدخول";
+"E-mail" = "عنوان البريد الالكتروني";
+"Requests" = "آذونات";
+"Attendance" = "الحضور";
+"Check-in/Out" = "تسجيل الدخول/ الخروج";
+"Calendar" = "التقويم";
+"Settings" = "الاعدادات";
+"About" = "حول البرنامج";
+"Logout" = "تسجيل الخروج";
+"Absent" = "غياب";
+"Weekend" = "آجازة آسبوعية";
+"Attend" = "حضور";
+"Private Holiday" = "آجازة خاصة";
+"Public Holiday" = "آجازات سنوية";
+
+"Select Date" = "آختر التاريخ";
+"Date Start And End" =  "تاريخ البداية و النهاية";
+"Vacation Type" = "نوع الاجازة";
+"Submit" = "تآكيد";
+"Remarks" = "ملاحظات";
+"Vacation" = "آجازة";
+
+
+"Time Start And End" = "بداية و نهاية الوقت";
+"Permission Type" = "نوع الاذن";
+"Notes" = "الملاحظات";
+"Permission" = "آذونات";
+"From Date:" = "من تاريخ";
+"To Date:" = "آلي تاريخ";
+
+"Something went wrong. Please check your connection and try again!" = "حدث خطآ برجاء آعادة المحاولة";
+"You are not connected to the internet" = "لا يوجد آتصال بالانترنت برجاء آعادة المحاولة بعد الاتصال بالضغط علي زر البصمة!";
+
+"Failed to load permission types. Please try again!" = "خظآ في تحميل آنواع الاذونات المتاحة!";
+
+"Must enter a valid note" = "آدخل الملاحظات";
+
+"You must select a date" = "لابد من آختيار تاريخ";
+
+"To date can't be less than from date" = "تاريخ النهاية لا يمكن آن يكون آقل من تاريخ البداية";
+
+
+"From date can't be greater than to date" = "تاريخ البداية لا يمكن آن يكون آكتر من تاريخ النهاية";
+//
+"Select Type" = "آختر الاذن";
+//
+"Loading Permissions" = "تحميل الاذونات";
+//
+"Loading Vacations" = "تحميل الاجازات";
+
+"No Pending Requests" = "لا توجد آذونات";
+
+"Request was approved" = "تم الموافقة علي الطلب";
+
+"Something went wrong" = "حدث خطآ ما";
+"Removing Request" = "آزالة الطلب";
+"Getting Team Attendance" = "تحميل حضور الفريق";
+
+"Date can't be greater than today" = "لا يمكن للتاريخ آن يكون آكبر من تاريخ اليوم";
+
+
+"We couldn't find your destination contact your manager" = "لم نتمكن من تحديد وجهتك. حاول التواصل مع مديرك المباشر.";
+
+
+"You already checked in today!" = "لقد قمنا بآخذ بصمتك اليوم";
+
+"Your Destination" = "وجهتك النهائية";
+
+"Warning!" = "تنبية!";
+
+"We can't check you in because you are far away from your destination get closer and try again!" = "لم نتمكن من تسجيل دخولك نظرا لبعد المسافة بين موقعك و الشركة برجاء الاقتراب و آعادة المحاولة.";
+
+"We need to confirm your identity!" = "نحتاج الي التآكد من هوية الهاتف.";
+
+"You need to verity your identity or else we can't check you in!" = "نحتاج الي التآكد من هويتك لكي نقوم بتسجيل دخولك.";
+
+
+"You checked in Successfully!" = "تم تسجيل دخولك بنجاح";
+
+"You checked Out Successfully!" = "تم تسجيل الخروج بنجاح";
+
+"Try Again!" = "حاول مرة آخري!";
+
+"Pending Requests" = "الطلبات المعلقة";
+
+"My Attendance" = "حضوري الشخصي";
+
+"About" = "حول البرنامج";
+
+"Select Language" = "آختر اللغة";
+
+
+"Continue" = "آستمرار";
+
+"Invalid URL" = "خظآ بالرابط الخاص بك.";
+
+
+
+"Welcome" = "مرحبا بك";
+
+"Please Login To Continue" = "برجاء تسجيل الدخول للمتابعة";
+
+
+"Username" = "آسم المستخدم";
+
+"Password" = "كلمة المرور";
+
+
+"Dashboard" = "لوحة القيادة";
+
+
+"Check in" = "بصمة دخول";
+"Check Out" = "بصمة خروج";
+
+"Same url as before" = "نفس الرابط السابق";
+
+"Yes" = "موافق";
+
+"No" = "الغاء";
+
+"You are logged in, if you change url you will logged out?" = "لقد قمت بتسجيل الدخول، في حالة تغيير الرابط الخاص بك سيتم تسجيل الخروج";
+
+"Getting your destination" = "جاري تحديد وجهتك النهائية";

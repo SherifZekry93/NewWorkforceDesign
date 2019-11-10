@@ -22,7 +22,9 @@ extension UIColor
     static let cvBG = UIColor(red: 196, green: 196, blue: 196)
     static let orangeTitle = UIColor(red: 284, green: 147, blue: 90)
     static let redMessageColor = UIColor(red: 215, green: 7, blue: 1)
-    
+    static let calendarHeaderView = UIColor(red: 54, green: 56, blue: 71)
+    static let permissionBGColor = UIColor(red: 245, green: 249, blue: 250)
+    static let aboutTextColor = UIColor(red: 117, green: 125, blue: 128)
     static let greenMessageColor = UIColor(red: 8, green: 171, blue: 8)
     
     convenience init(red: CGFloat, green: CGFloat, blue: CGFloat) {

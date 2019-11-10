@@ -14,5 +14,6 @@ target 'CutsomProgrammaticMenu' do
    pod 'Alamofire', '~> 4.7'
    pod 'IQKeyboardManager'
    pod 'SwiftMessages'
-   pod 'ProgressHUD'
+   pod 'ProgressHUD' 
+   pod 'FSCalendar'
 end

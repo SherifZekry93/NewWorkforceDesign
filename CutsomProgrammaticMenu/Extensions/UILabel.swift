@@ -13,9 +13,8 @@ extension UILabel
     func setAttributedText(firstLine:String,secondLine:String,firstFontSize:CGFloat,secondFontSize:CGFloat,firstColor:UIColor,secondColor:UIColor,lineSpacing:CGFloat = 3)
     {
         numberOfLines = -1
-//        font = UIFont(name: <#T##String#>, size: <#T##CGFloat#>).
         
-        let labelAttributedText = NSMutableAttributedString(string: firstLine, attributes: [NSAttributedString.Key.font:UIFont.monospacedDigitSystemFont(ofSize: 25, weight: .bold)
+        let labelAttributedText = NSMutableAttributedString(string: firstLine, attributes: [NSAttributedString.Key.font:UIFont.monospacedDigitSystemFont(ofSize: firstFontSize, weight: .bold)
             ,NSAttributedString.Key.foregroundColor:firstColor])
         
         labelAttributedText.append(NSAttributedString(string:secondLine, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: secondFontSize), NSAttributedString.Key.foregroundColor: secondColor]))

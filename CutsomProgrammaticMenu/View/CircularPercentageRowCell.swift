@@ -24,6 +24,7 @@ class CircularPercentageRowCell: UICollectionViewCell {
         label.textAlignment = .center
         return label
     }()
+    
     let offlineLabel:UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -62,13 +63,14 @@ class CircularPercentageRowCell: UICollectionViewCell {
         dummyView1.centerYAnchor.constraint(equalTo: ring.centerYAnchor).isActive = true
         dummyView1.anchorToView(size: .init(width: 80, height: 80))
         dummyView1.layer.cornerRadius = 40
-
         dummyView1.addSubview(label)
         label.fillSuperView()
     }
+    
     override func layoutSubviews() {
         print(onlineRing.frame.width)
     }
+    
     fileprivate func setupViews()
     {
         let label = HeaderLabel()
@@ -78,7 +80,7 @@ class CircularPercentageRowCell: UICollectionViewCell {
         label.anchorToView(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 10, left: 10, bottom: 0, right: 10))
         
 
-        let stack = UIStackView(arrangedSubviews: [onlineRing,offlineRing,vacationRing])
+        let stack = UIStackView(arrangedSubviews: [UIView(),onlineRing,UIView(),offlineRing,UIView(),vacationRing,UIView()])
         
         stack.distribution = .equalSpacing
         
@@ -88,9 +90,9 @@ class CircularPercentageRowCell: UICollectionViewCell {
         
         setCircularBarProgress(progress: vacationRing, fontColor: .blue, progressValue: 75)
         
-        
         addSubview(stack)
-        stack.anchorToView(top: topAnchor, leading: leadingAnchor, bottom:bottomAnchor, trailing: trailingAnchor, padding: .init(top: 40, left: 15, bottom:0, right: 15), size:.init(width:0,height:0),centerH: true,centerV: true)
+        
+        stack.anchorToView(top: topAnchor, leading: leadingAnchor, bottom:bottomAnchor, trailing: trailingAnchor, padding: .init(top: 40, left: 8, bottom:0, right: 8), size:.init(width:0,height:0),centerH: true,centerV: true)
         
     }
     fileprivate func setCircularBarProgress(progress:UICircularProgressRing,fontColor:UIColor,progressValue:CGFloat)
@@ -105,7 +107,6 @@ class CircularPercentageRowCell: UICollectionViewCell {
         progress.startProgress(to: progressValue, duration: 0.5, completion: nil)
         progress.outerRingColor = UIColor.innerCircleColor
         progress.anchorToView(size:.init(width: 100, height: 100))
-        
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -12,7 +12,6 @@ extension String
 {
     func localized() -> String
     {
-//        return self
         return NSLocalizedString(self, comment: "")
     }
 }

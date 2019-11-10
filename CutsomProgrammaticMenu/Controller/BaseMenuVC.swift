@@ -99,32 +99,50 @@ class BaseMenuVC:UIViewController
 
     }
     
-    @objc func showThird()
-    {
-        navigationController?.pushViewController(ThirdVC(), animated: true)
-    }
-    @objc func showFourth()
-    {
-        navigationController?.pushViewController(FourthVC(), animated: true)
-    }
+//    @objc func showThird()
+//    {
+//        navigationController?.pushViewController(ThirdVC(), animated: true)
+//    }
+//
+//    @objc func showFourth()
+//    {
+//        navigationController?.pushViewController(FourthVC(), animated: true)
+//    }
+    
     fileprivate func setupViews()
     {
         backgroundMenuView.alpha = 0
+        
         Close.setImage(#imageLiteral(resourceName: "ic_clear_24px"), for: .normal)
+        
         Close.backgroundColor = .orange
+        
         view.addSubview(darkFillView)
+        
         view.addSubview(backgroundMenuView)
+        
         backgroundMenuView.fillSuperView()
+        
         backgroundMenuView.backgroundColor = .clear
+        
         vacatioonButton.setImage(#imageLiteral(resourceName: "Status-On"), for: .normal)
+        
         permissionButton.setImage(#imageLiteral(resourceName: "Rewards-On"), for: .normal)
+        
         pendingButton.setImage(#imageLiteral(resourceName: "Calendar-Off"), for: .normal)
+        
         anothervacatioonButton.setImage(#imageLiteral(resourceName: "Deals-Off"), for: .normal)
+        
         anotherpermissionButton.setImage(#imageLiteral(resourceName: "Messenger-On"), for: .normal)
+        
         anotherpendingButton.setImage(#imageLiteral(resourceName: "Rewards-Off"), for: .normal)
+        
         anotheranothervacatioonButton.setImage(#imageLiteral(resourceName: "Deals-Off"), for: .normal)
+        
         anotheranotherpermissionButton.setImage(#imageLiteral(resourceName: "Messenger-On"), for: .normal)
+        
         anotheranotherpendingButton.setImage(#imageLiteral(resourceName: "Rewards-Off"), for: .normal)
+        
         menu.setImage(#imageLiteral(resourceName: "ic_apps_24px"), for: .normal)
         
         menu.backgroundColor = .orange
@@ -148,44 +166,20 @@ class BaseMenuVC:UIViewController
             UIStackView(arrangedSubviews: [aboutButton,UIView(),logOutButton])
             ], axis: .vertical, spacing: 0)
         menuButtons.distribution = .equalSpacing
-        //        menuButtons.distribution = .fillEqually
         backgroundMenuView.addSubview(menuButtons)
-        
-        
-        
         menuButtons.anchorToView(trailing: nil,size:.init(width: 270, height: 500),centerH:true)
-        
-        
-        
         MenuButtonTop = menuButtons.centerYAnchor.constraint(equalTo: view.centerYAnchor)// menuButtons.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
         MenuButtonTop.constant = -50
         MenuButtonTop.isActive = true
-        
         menu.addTarget(self, action: #selector(openMenu), for: .touchUpInside)
-        
         view.addSubview(Close)
-        
         Close.anchorToView(top: nil, leading: nil, bottom: backgroundMenuView.bottomAnchor, trailing: backgroundMenuView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 20, right: 20), size: .init(width: 50, height: 50))
-        
         Close.layer.cornerRadius = 25
-        
         Close.clipsToBounds = true
-        
         Close.alpha = 0
-        
         Close.addTarget(self, action: #selector(closeMenu), for: .touchUpInside)
-        
-        
         darkFillView.alpha = 0
-        
-        //MenuButtonTop.constant = 230
-        
         menuButtons.alpha = 0
-        
-        vacatioonButton.addTarget(self, action: #selector(showThird), for: .touchUpInside)
-        
-        permissionButton.addTarget(self, action: #selector(showFourth), for: .touchUpInside)
-        
     }
     @objc func openMenu()
     {
@@ -196,7 +190,7 @@ class BaseMenuVC:UIViewController
         close()
     }
     override func viewDidLayoutSubviews() {
-        darkFillView.frame = CGRect(x: menu.frame.origin.x + 15 , y: menu.frame.origin.y + 15, width: 42, height: 42)
+        darkFillView.anchorToView(size:.init(width: 42, height: 42), centerH: true, centerV: true)//frame = CGRect(x: menu.frame.origin.x + 15 , y: menu.frame.origin.y + 15, width: 42, height: 42)
         darkFillView.backgroundColor = UIColor(red: 54/255, green: 56/255, blue: 71/255, alpha: 0.85)//.black
         darkFillView.layer.cornerRadius = 21
     }
@@ -204,33 +198,21 @@ class BaseMenuVC:UIViewController
     fileprivate func menuClicked()
     {
         backgroundMenuView.alpha = 1
-        
         MenuButtonTop.constant = 0//(view.frame.height / 2) - (476 / 2)
-        
         self.menu.isHidden = true
         if darkFillView.transform == CGAffineTransform.identity
         {
-            
-            
             UIView.animate(withDuration: 0.3, animations: {
-                
                 self.view.layoutIfNeeded()
                 self.darkFillView.alpha = 1
-                
                 self.darkFillView.transform = CGAffineTransform(scaleX: 90, y: 90)
-                
                 self.menuButtons.alpha = 1
-                
             })
-            
         }
-        
         UIView.animate(withDuration: 0.5) {
-            
             self.Close.alpha = 1
             self.menu.alpha = 0
         }
-        
     }
     fileprivate func close()
     {
@@ -243,17 +225,13 @@ class BaseMenuVC:UIViewController
             self.Close.alpha = 0
             self.menu.alpha = 1
             self.menuButtons.alpha = 0
-            
             self.MenuButtonTop.constant = -50
-            
             self.view.layoutIfNeeded()
-            
             self.Close.isHidden = false
         }
         
         UIView.animate(withDuration: 0.5, animations: {
             self.darkFillView.alpha = 0
-            
             self.darkFillView.transform = .identity
         }) { (_) in
             self.backgroundMenuView.alpha = 0
@@ -295,7 +273,6 @@ class BaseMenuVC:UIViewController
         iconsStack.distribution = .equalCentering
         whiteTransparentView.addSubview(iconsStack)
         iconsStack.fillSuperView()
-        //iconsStack.anchorToView(centerH:true,centerV:true)
         whiteTransparentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goToController)))
         return whiteTransparentView
     }
@@ -305,9 +282,9 @@ class BaseMenuVC:UIViewController
         {
             switch tag {
             case 2000:
-                navigationController?.pushViewController(DashboardVC(), animated: true)
+                self.navigationController?.pushViewController(DashboardVC(), animated: true)
             case 2001:
-                print("calendar")
+                navigationController?.pushViewController(CalendarVC(), animated: true)
             case 2002:
                 print("Requests")
             case 2003:
@@ -318,11 +295,14 @@ class BaseMenuVC:UIViewController
             case 2005:
                 closeMenu()
                 let setting = SettingsVC()
+                setting.modalPresentationStyle = .fullScreen
                 setting.closeButton.isHidden = false
                 present(UINavigationController(rootViewController: setting), animated: true, completion: nil)
             case 2006:
-                print("About")
+                closeMenu()
+                navigationController?.pushViewController(AboutVC(), animated: true)
             case 2007:
+                closeMenu()
                 User.removeSavedUser()
                 let _  = Authenticate()
                 closeMenu()

@@ -2,6 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Cairo-Regular.ttf</string>
+		<string>Raleway-SemiBold.ttf</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -39,17 +44,14 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-    
-    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>We need to access your location to be able to tell you where you should go now and show you the way as well?</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>We need to access your location to be able to tell you where you should go now and show you the way as well?</string>
-    <key>NSLocationUsageDescription</key>
-    <string>We need to access your location to be able to tell you where you should go now and show you the way as well?</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>We need to access your location to be able to tell you where you should go now and show you the way as well?</string>
-
-    
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We need to access your location to be able to tell you where you should go now and show you the way as well?</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need to access your location to be able to tell you where you should go now and show you the way as well?</string>
+	<key>NSLocationUsageDescription</key>
+	<string>We need to access your location to be able to tell you where you should go now and show you the way as well?</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need to access your location to be able to tell you where you should go now and show you the way as well?</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

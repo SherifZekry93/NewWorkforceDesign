@@ -42,19 +42,13 @@ extension UIViewController
         var config = SwiftMessages.defaultConfig
         config.duration = .seconds(seconds: 2)
         config.presentationStyle = .top
-        config.presentationContext = .automatic // .window(windowLevel: UIWindowLevelAlert)
-        //        config.preferredStatusBarStyle = .lightContent
-        
-        SwiftMessages.show(config: config) { () -> UIView in // code is always executed on the main queue
-            let view = MessageView.viewFromNib(layout: .statusLine) // .messageView, .statusLine
+        config.presentationContext = .automatic
+        SwiftMessages.show(config: config) { () -> UIView in
+            let view = MessageView.viewFromNib(layout: .statusLine)
             view.configureContent(title: nil, body: body, iconImage: nil, iconText: nil, buttonImage: nil, buttonTitle: nil, buttonTapHandler: { _ in SwiftMessages.hide() })
-            view.configureTheme(theme, iconStyle: .light) // info, success, warning, error
-            //            view.accessibilityPrefix = "warning"
+            view.configureTheme(theme, iconStyle: .light)
             view.titleLabel?.isHidden = true
-            //            view.iconImageView?.isHidden = true
-            //            view.iconLabel?.isHidden = true
             view.button?.isHidden = true
-            
             return view
         }
     }
@@ -62,7 +56,9 @@ extension UIViewController
     {
         if User.getLocallySavedUser() == nil
         {
-            present(UINavigationController(rootViewController: SettingsVC()), animated: animated, completion: nil)
+            let setting = UINavigationController(rootViewController: SettingsVC())
+            setting.modalPresentationStyle = .fullScreen
+            present(setting, animated: animated, completion: nil)
             return false
         }
         return true
@@ -82,13 +78,13 @@ extension UIViewController
     {
         let titleLabel = UILabel()
         
-        titleLabel.text = title
+        titleLabel.text = title.localized()
         
         let titleView = UIView()
         
         view.insertSubview(titleView, belowSubview: comparedTo)
         
-        let backgroundImage = UIImageView(image: #imageLiteral(resourceName: "TitleBackgroundView"))
+        let backgroundImage = UIImageView(image: #imageLiteral(resourceName: "Rectangle 5"))
         
         titleView.addSubview(backgroundImage)
         

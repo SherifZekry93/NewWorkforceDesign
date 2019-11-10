@@ -92,6 +92,7 @@ extension DashboardHeaderController:UICollectionViewDelegateFlowLayout,UICollect
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20
     }
+    
     fileprivate func setupCollectionView(){
         collectionView.backgroundColor = .clear
         collectionView.delegate = self

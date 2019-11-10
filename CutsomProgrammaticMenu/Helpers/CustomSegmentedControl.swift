@@ -17,7 +17,6 @@ class CustomSegmentedControl: UIView {
         layer.masksToBounds = true
         semanticContentAttribute = .forceLeftToRight
         selectedSegmentIndex = MOLHLanguage.currentAppleLanguage() == "en" ? 0 : 1
-
     }
     
     var viewsUpdated = false
@@ -157,7 +156,6 @@ class CustomSegmentedControl: UIView {
             {
                 
                 MOLH.setLanguageTo("en")
-                
                 MOLH.reset()
                 
             }
@@ -165,8 +163,8 @@ class CustomSegmentedControl: UIView {
             {
                 
                 MOLH.setLanguageTo("ar")
-                
                 MOLH.reset()
+                
             }
 
         }

@@ -14,22 +14,21 @@ import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
-    func reset() {
-        window?.rootViewController = UINavigationController(rootViewController:  DashboardVC())
+    
+    func reset()
+    {
+        window?.rootViewController = UINavigationController(rootViewController:  PendingRequestsVC())
     }
     
-
     var window: UIWindow?
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GMSServices.provideAPIKey("AIzaSyAnKvay92-zyf4Or37UL6tsEF7BL8PiC6U")
         GMSPlacesClient.provideAPIKey("AIzaSyAnKvay92-zyf4Or37UL6tsEF7BL8PiC6U")
 
         IQKeyboardManager.shared().isEnabled = true
         MOLH.shared.activate(true)
-        window?.rootViewController = UINavigationController(rootViewController:  DashboardVC())
-        // Override point for customization after application launch.
+        window?.rootViewController = UINavigationController(rootViewController: PendingRequestsVC())
+
         return true
     }
     
@@ -57,7 +56,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
         UserDefaults.standard.setValue(false, forKey: "AnimationDoneLoading")
     }
     
-
-
 }
 

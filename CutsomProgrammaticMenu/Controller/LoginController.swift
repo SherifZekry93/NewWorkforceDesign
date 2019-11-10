@@ -103,7 +103,18 @@ class LoginController: UIViewController {
     }
     @objc func performLogin()
     {
-        verifyUserInputs()
+        
+        UIView.animate(withDuration: 0.6,
+        animations: {
+            self.loginButton.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        },
+        completion: { _ in
+            UIView.animate(withDuration: 0.6) {
+                self.loginButton.transform = CGAffineTransform.identity
+                self.verifyUserInputs()
+            }
+        })
+
     }
     
     func verifyUserInputs() {

@@ -112,7 +112,6 @@ extension RecentRequestsController:UICollectionViewDelegateFlowLayout,UICollecti
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let yourCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentRequestEmpDetailsCell", for: indexPath) as! RecentRequestEmpDetailsCell
-        //
         yourCollectionViewCell.typeImage.image = indexPath.row % 2 == 0 ? #imageLiteral(resourceName: "Group 368") : #imageLiteral(resourceName: "Group 371")
         yourCollectionViewCell.typeLabel.text = indexPath.row % 2 == 0 ? "Vacation" : "Permission"
         yourCollectionViewCell.statusLabel.text = indexPath.row % 2 == 0 ? "Pending" : "Approved"

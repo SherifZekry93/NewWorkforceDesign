@@ -33,9 +33,14 @@ class CheckinVC: BaseMenuVC {
         let map = GMSMapView()
         return map
     }()
+    
+    var closest:CLLocation!
+    
     var isLocationUpdated = false
     
     var isCheckingOut = true
+    
+    let isCheckingNow = false
     
     let tryAgainButton:UIButton = {
         let button = UIButton(type: .system)
@@ -48,11 +53,13 @@ class CheckinVC: BaseMenuVC {
         button.isHidden = true
         return button
     }()
+    
     @objc func tryAgainButtonClicked()
     {
         isLocationUpdated = false
         locationManager.startUpdatingLocation()
     }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -61,11 +68,12 @@ class CheckinVC: BaseMenuVC {
         addMapView()
         setupLocationManager()
         addCheckinButton()
+//        showInfoMessage(message: "You are not connected to the internet".localized(), isError: true)
     }
     fileprivate func addMapView()
     {
         view.insertSubview(mapView, belowSubview: darkFillView)
-        mapView.anchorToView(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor,padding: .init(top: 50, left: 0, bottom: 00, right: 0))
+        mapView.anchorToView(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor,padding: .init(top: 50, left: 0, bottom: 100, right: 0))
     }
     override func viewWillDisappear(_ animated: Bool) {
         locationManager.stopUpdatingLocation()
@@ -209,7 +217,6 @@ extension CheckinVC:CLLocationManagerDelegate
                 getAttendanceFromAPI()
                 isLocationUpdated = true
             }
-            
         }
         
     }
@@ -229,8 +236,8 @@ extension CheckinVC:CLLocationManagerDelegate
         guard let userID = User.getLocallySavedUser()?.employeeId else {return}
         let url = Utility.getFinalURL(methodName: "ExternalUserStatus", params: [
             "\(userID)"])
+        
         Service.shared.fetchGenericJSONData(urlString: url, parameters: nil) {[weak self] (res:[UserDestinations]?, err) in
-            
             
             if err != nil
             {
@@ -245,6 +252,7 @@ extension CheckinVC:CLLocationManagerDelegate
                 if res.count == 0
                 {
                     self?.showInfoMessage(message: "We couldn't find your destination contact your manager".localized(), isError: true)
+                    ProgressHUD.dismiss()
                     //ProgressHUD.showError("We couldn't find your destination contact your manager".localized());
                     return
                 }
@@ -268,24 +276,18 @@ extension CheckinVC:CLLocationManagerDelegate
         guard let userLocation = currentLocation else {return}
         
         
-        guard let closest = locations.min(by:
-            { $0.distance(from: userLocation) < $1.distance(from: userLocation)}) else {return}
-        
-        //        let distanceInMeters = closest.distance(from: userLocation)
-        
-        centerButtonWasClicked()
+        closest = locations.min(by:
+            { $0.distance(from: userLocation) < $1.distance(from: userLocation)})
         
         
-        //centerButtonWasClicked()
-        
+        let distanceInMeters = closest.distance(from: userLocation)
+
         userDestinations.forEach { (dest) in
             
-            
-            
             if dest.latitude == closest.coordinate.latitude && dest.longitude == closest.coordinate.longitude
-                && dest.Status == true
+                && dest.Status == true && isCheckingNow
             {
-                let distanceInMeters = closest.distance(from: userLocation)
+                //let distanceInMeters = closest.distance(from: userLocation)
                 
                 if distanceInMeters > 100
                 {
@@ -303,26 +305,17 @@ extension CheckinVC:CLLocationManagerDelegate
                 
             else if dest.latitude == closest.coordinate.latitude && dest.longitude == closest.coordinate.longitude && dest.Status == false
             {
-                
                 destinationMarker?.map = nil
                 destinationMarker = GMSMarker(position: closest.coordinate)
                 destinationMarker?.title = NSLocalizedString("Your Destination".localized(), comment: "")
                 destinationMarker?.map = mapView
-                
-                
                 self.closestLocation = dest
-                
-                let distanceInMeters = closest.distance(from: userLocation)
-                
                 if distanceInMeters > 100
                 {
                     ProgressHUD.dismiss()
                     getPolylineRoute(from: CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude), to:  CLLocationCoordinate2D(latitude: closest.coordinate.latitude, longitude: closest.coordinate.longitude))
-                    
                     showInfoMessage(message: "We can't check you in because you are far away from your destination get closer and try again!".localized(), isError: true)
-                    
                     self.locationManager.stopUpdatingLocation()
-                    
                     self.tryAgainButton.isHidden = false
                 }
                 else
@@ -375,14 +368,12 @@ extension CheckinVC:CLLocationManagerDelegate
                 "Longitude":   closestLocation.latitude,
                 "Latitude":  closestLocation.longitude
         ]
-        //        print(params)
         
         Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseString {[unowned self] (response) in
             
             if let error = response.error
             {
                 self.showInfoMessage(message: error.localizedDescription, isError: true)
-                //ProgressHUD.showError(error.localizedDescription)
                 return
             }
             if response.value == "1"

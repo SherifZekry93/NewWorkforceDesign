@@ -71,8 +71,11 @@ class SettingsVC: UIViewController {
         urlTextField.localizeTextField()
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = .green
-        //        dummyView.semanticContentAttribute = .forceLeftToRight
-        //        languageSegmentedControl.semanticContentAttribute = .forceLeftToRight
+        if #available(iOS 13.0, *) {
+            isModalInPresentation = true
+        } else {
+            // Fallback on earlier versions
+        }
     }
     let dummyView = UIView()
     

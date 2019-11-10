@@ -29,7 +29,7 @@ class Service {
                     }
                     else
                     {
-                        print(response.error)
+                        //print(response.error)
                         completion(nil,response.error)
                     }
                 }

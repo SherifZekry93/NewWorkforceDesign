@@ -60,7 +60,7 @@ class BaseMenuVC:UIViewController
     }()
     
     lazy var attendanceOpener:UIView = {
-        let v = getWhiteTransparentView(icon: #imageLiteral(resourceName: "menuAttendance"), text: "Attendance".localized(), tag: 2003)
+        let v = getWhiteTransparentView(icon: #imageLiteral(resourceName: "menuAttendance"), text: "Permissions".localized(), tag: 2003)
         return v
     }()
     
@@ -190,8 +190,8 @@ class BaseMenuVC:UIViewController
         close()
     }
     override func viewDidLayoutSubviews() {
-        darkFillView.anchorToView(size:.init(width: 42, height: 42), centerH: true, centerV: true)//frame = CGRect(x: menu.frame.origin.x + 15 , y: menu.frame.origin.y + 15, width: 42, height: 42)
-        darkFillView.backgroundColor = UIColor(red: 54/255, green: 56/255, blue: 71/255, alpha: 0.85)//.black
+        darkFillView.anchorToView(size:.init(width: 42, height: 42), centerH: true, centerV: true)
+        darkFillView.backgroundColor = UIColor(red: 54/255, green: 56/255, blue: 71/255, alpha: 0.85)
         darkFillView.layer.cornerRadius = 21
     }
     
@@ -286,26 +286,37 @@ class BaseMenuVC:UIViewController
             case 2001:
                 navigationController?.pushViewController(CalendarVC(), animated: true)
             case 2002:
-                print("Requests")
+                navigationController?.pushViewController(PendingRequestsVC(), animated: true)
             case 2003:
-                print("Attendance")
+                print("Permissions")
             case 2004:
                 closeMenu()
                 navigationController?.pushViewController(CheckinVC(), animated: true)
             case 2005:
                 closeMenu()
                 let setting = SettingsVC()
-                setting.modalPresentationStyle = .fullScreen
-                setting.closeButton.isHidden = false
-                present(UINavigationController(rootViewController: setting), animated: true, completion: nil)
+                               setting.modalPresentationStyle = .fullScreen
+                               setting.closeButton.isHidden = false
+                               self.present(UINavigationController(rootViewController: setting), animated: true, completion: nil)
+                
             case 2006:
                 closeMenu()
                 navigationController?.pushViewController(AboutVC(), animated: true)
             case 2007:
                 closeMenu()
-                User.removeSavedUser()
-                let _  = Authenticate()
-                closeMenu()
+                let alert = UIAlertController(title: "Logout", message: "Are you sure you want to log out?", preferredStyle: .alert);
+                
+                let logoutAction = UIAlertAction(title: "Logout", style: .default) { (_) in
+                    NewUser.removeSavedUser()
+                    let _  = self.Authenticate()
+                }
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+                    self.dismiss(animated: true, completion: nil)
+                }
+                alert.addAction(logoutAction);
+                alert.addAction(cancelAction);
+                present(alert, animated: true, completion: nil)
+                
             default:
                 print("Some other character")
             }

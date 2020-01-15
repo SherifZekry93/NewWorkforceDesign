@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E1E2136238A8A0B00A7262E /* PermissionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1E2135238A8A0B00A7262E /* PermissionTypes.swift */; };
+		7E1E2138238A913600A7262E /* PermissionTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1E2137238A913600A7262E /* PermissionTypeCell.swift */; };
+		7E1E213A238A9E9800A7262E /* RequestPermissionVacationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1E2139238A9E9800A7262E /* RequestPermissionVacationVC.swift */; };
+		7E1E213C238AB26200A7262E /* BaseRequestsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1E213B238AB26200A7262E /* BaseRequestsController.swift */; };
 		7E22067D2341EDF10000DAA8 /* PendingRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E22067C2341EDF10000DAA8 /* PendingRequests.swift */; };
+		7E26C44E23CEF71B0052217F /* TeamStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E26C44D23CEF71B0052217F /* TeamStatistics.swift */; };
 		7E28B0E6231D23E200267171 /* RecentRequestsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28B0E5231D23E200267171 /* RecentRequestsCell.swift */; };
 		7E28B0E8231D254200267171 /* RecentRequestsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28B0E7231D254200267171 /* RecentRequestsController.swift */; };
 		7E28B0EA231D389E00267171 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28B0E9231D389E00267171 /* UILabel.swift */; };
@@ -32,6 +37,15 @@
 		7E28B15A232F58E300267171 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28B159232F58E300267171 /* UIViewController.swift */; };
 		7E28B15F232F8E7600267171 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E28B161232F8E7600267171 /* Localizable.strings */; };
 		7E4AFBEF2377FE1E001D5CB7 /* PendingRequestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4AFBEE2377FE1E001D5CB7 /* PendingRequestsVC.swift */; };
+		7E4AFC0D23782883001D5CB7 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4AFC0C23782883001D5CB7 /* MenuCell.swift */; };
+		7E4AFC0F23784202001D5CB7 /* PendingRequestsMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4AFC0E23784202001D5CB7 /* PendingRequestsMenuItem.swift */; };
+		7E4AFC1123797F32001D5CB7 /* PermissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4AFC1023797F32001D5CB7 /* PermissionCell.swift */; };
+		7E4AFC13237AFE50001D5CB7 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4AFC12237AFE50001D5CB7 /* ProfileVC.swift */; };
+		7E4AFC15237D65C5001D5CB7 /* PieChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4AFC14237D65C5001D5CB7 /* PieChartCell.swift */; };
+		7E4AFC19237EE613001D5CB7 /* ChartBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4AFC18237EE613001D5CB7 /* ChartBaseViewController.swift */; };
+		7E4AFC1B23814A81001D5CB7 /* ProfileEmployeeInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4AFC1A23814A81001D5CB7 /* ProfileEmployeeInfoCell.swift */; };
+		7E4AFC1D23816809001D5CB7 /* ProfileEmployeePendingRequestsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4AFC1C23816809001D5CB7 /* ProfileEmployeePendingRequestsCell.swift */; };
+		7E4AFC1F238568EF001D5CB7 /* EmployeeDataInPercentage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4AFC1E238568EF001D5CB7 /* EmployeeDataInPercentage.swift */; };
 		7E55F22D236EC1550045F69F /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E55F22C236EC1550045F69F /* AboutVC.swift */; };
 		7E55F22F236EC7C90045F69F /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E55F22E236EC7C90045F69F /* UINavigationController.swift */; };
 		7E7203E2231A533400D6BD99 /* DashBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7203E1231A533400D6BD99 /* DashBoardVC.swift */; };
@@ -55,12 +69,19 @@
 		7ED3AE9C230ABCFF0035CECA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ED3AE9A230ABCFF0035CECA /* Main.storyboard */; };
 		7ED3AE9E230ABD000035CECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ED3AE9D230ABD000035CECA /* Assets.xcassets */; };
 		7ED3AEA1230ABD000035CECA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ED3AE9F230ABD000035CECA /* LaunchScreen.storyboard */; };
+		7EEEA8E023CC98BF00305536 /* NewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEEA8DF23CC98BF00305536 /* NewUser.swift */; };
+		7EEEA8E223CD9E6C00305536 /* DecodableAttendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEEA8E123CD9E6C00305536 /* DecodableAttendance.swift */; };
 		EF3E1E1D96D11C618E5F98D5 /* Pods_CutsomProgrammaticMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70394E01F5A0A35627FE03F5 /* Pods_CutsomProgrammaticMenu.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		70394E01F5A0A35627FE03F5 /* Pods_CutsomProgrammaticMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CutsomProgrammaticMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E1E2135238A8A0B00A7262E /* PermissionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionTypes.swift; sourceTree = "<group>"; };
+		7E1E2137238A913600A7262E /* PermissionTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionTypeCell.swift; sourceTree = "<group>"; };
+		7E1E2139238A9E9800A7262E /* RequestPermissionVacationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPermissionVacationVC.swift; sourceTree = "<group>"; };
+		7E1E213B238AB26200A7262E /* BaseRequestsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequestsController.swift; sourceTree = "<group>"; };
 		7E22067C2341EDF10000DAA8 /* PendingRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRequests.swift; sourceTree = "<group>"; };
+		7E26C44D23CEF71B0052217F /* TeamStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamStatistics.swift; sourceTree = "<group>"; };
 		7E28B0E5231D23E200267171 /* RecentRequestsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentRequestsCell.swift; sourceTree = "<group>"; };
 		7E28B0E7231D254200267171 /* RecentRequestsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentRequestsController.swift; sourceTree = "<group>"; };
 		7E28B0E9231D389E00267171 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
@@ -88,6 +109,15 @@
 		7E28B160232F8E7600267171 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E28B162232F8E7A00267171 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E4AFBEE2377FE1E001D5CB7 /* PendingRequestsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRequestsVC.swift; sourceTree = "<group>"; };
+		7E4AFC0C23782883001D5CB7 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		7E4AFC0E23784202001D5CB7 /* PendingRequestsMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRequestsMenuItem.swift; sourceTree = "<group>"; };
+		7E4AFC1023797F32001D5CB7 /* PermissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionCell.swift; sourceTree = "<group>"; };
+		7E4AFC12237AFE50001D5CB7 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		7E4AFC14237D65C5001D5CB7 /* PieChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartCell.swift; sourceTree = "<group>"; };
+		7E4AFC18237EE613001D5CB7 /* ChartBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartBaseViewController.swift; sourceTree = "<group>"; };
+		7E4AFC1A23814A81001D5CB7 /* ProfileEmployeeInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEmployeeInfoCell.swift; sourceTree = "<group>"; };
+		7E4AFC1C23816809001D5CB7 /* ProfileEmployeePendingRequestsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEmployeePendingRequestsCell.swift; sourceTree = "<group>"; };
+		7E4AFC1E238568EF001D5CB7 /* EmployeeDataInPercentage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDataInPercentage.swift; sourceTree = "<group>"; };
 		7E55F22C236EC1550045F69F /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		7E55F22E236EC7C90045F69F /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		7E55F231236EDC460045F69F /* Cairo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cairo-Regular.ttf"; sourceTree = "<group>"; };
@@ -114,6 +144,8 @@
 		7ED3AE9D230ABD000035CECA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7ED3AEA0230ABD000035CECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7ED3AEA2230ABD000035CECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7EEEA8DF23CC98BF00305536 /* NewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUser.swift; sourceTree = "<group>"; };
+		7EEEA8E123CD9E6C00305536 /* DecodableAttendance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableAttendance.swift; sourceTree = "<group>"; };
 		9F569B37A5C97325A36DB7C0 /* Pods-CutsomProgrammaticMenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CutsomProgrammaticMenu.release.xcconfig"; path = "Pods/Target Support Files/Pods-CutsomProgrammaticMenu/Pods-CutsomProgrammaticMenu.release.xcconfig"; sourceTree = "<group>"; };
 		AF21C4E787B099206FE45527 /* Pods-CutsomProgrammaticMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CutsomProgrammaticMenu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CutsomProgrammaticMenu/Pods-CutsomProgrammaticMenu.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,6 +191,10 @@
 			children = (
 				7E725D2E2330DE8400341B64 /* User.swift */,
 				7E725D3C2332435700341B64 /* UserDestination.swift */,
+				7E4AFC0E23784202001D5CB7 /* PendingRequestsMenuItem.swift */,
+				7EEEA8DF23CC98BF00305536 /* NewUser.swift */,
+				7EEEA8E123CD9E6C00305536 /* DecodableAttendance.swift */,
+				7E26C44D23CEF71B0052217F /* TeamStatistics.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -175,6 +211,13 @@
 				7E28B0F3231EBB6E00267171 /* recentRequestEmpDetailsCell.swift */,
 				7E28B0F7231FFE5C00267171 /* ListOfEmployeesHeaderView.swift */,
 				7E28B0F92320017D00267171 /* EmpListEmployeeCell.swift */,
+				7E4AFC0C23782883001D5CB7 /* MenuCell.swift */,
+				7E4AFC1023797F32001D5CB7 /* PermissionCell.swift */,
+				7E4AFC14237D65C5001D5CB7 /* PieChartCell.swift */,
+				7E4AFC1A23814A81001D5CB7 /* ProfileEmployeeInfoCell.swift */,
+				7E4AFC1C23816809001D5CB7 /* ProfileEmployeePendingRequestsCell.swift */,
+				7E4AFC1E238568EF001D5CB7 /* EmployeeDataInPercentage.swift */,
+				7E1E2137238A913600A7262E /* PermissionTypeCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -195,6 +238,11 @@
 				7E22067C2341EDF10000DAA8 /* PendingRequests.swift */,
 				7E55F22C236EC1550045F69F /* AboutVC.swift */,
 				7E4AFBEE2377FE1E001D5CB7 /* PendingRequestsVC.swift */,
+				7E4AFC12237AFE50001D5CB7 /* ProfileVC.swift */,
+				7E4AFC18237EE613001D5CB7 /* ChartBaseViewController.swift */,
+				7E1E2135238A8A0B00A7262E /* PermissionTypes.swift */,
+				7E1E2139238A9E9800A7262E /* RequestPermissionVacationVC.swift */,
+				7E1E213B238AB26200A7262E /* BaseRequestsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -408,30 +456,44 @@
 				7E28B0FC232133B200267171 /* UIView.swift in Sources */,
 				7E28B0E6231D23E200267171 /* RecentRequestsCell.swift in Sources */,
 				7E28B0FA2320017D00267171 /* EmpListEmployeeCell.swift in Sources */,
+				7E26C44E23CEF71B0052217F /* TeamStatistics.swift in Sources */,
 				7E28B0E8231D254200267171 /* RecentRequestsController.swift in Sources */,
+				7EEEA8E023CC98BF00305536 /* NewUser.swift in Sources */,
+				7E4AFC1B23814A81001D5CB7 /* ProfileEmployeeInfoCell.swift in Sources */,
+				7E4AFC1F238568EF001D5CB7 /* EmployeeDataInPercentage.swift in Sources */,
 				7E725D3B2331475800341B64 /* Alamofire.swift in Sources */,
 				7ED3AE99230ABCFF0035CECA /* BaseMenuVC.swift in Sources */,
 				7E28B0F8231FFE5C00267171 /* ListOfEmployeesHeaderView.swift in Sources */,
 				7E28B0F2231E850C00267171 /* UIColor.swift in Sources */,
 				7E725D312330DFEB00341B64 /* Service.swift in Sources */,
+				7E4AFC19237EE613001D5CB7 /* ChartBaseViewController.swift in Sources */,
 				7E28B0FE2321582800267171 /* UIStackview.swift in Sources */,
 				7E7203E7231AD42400D6BD99 /* DashboardHeader.swift in Sources */,
 				7E725D3F233294F000341B64 /* UIImageView.swift in Sources */,
 				7E28B15A232F58E300267171 /* UIViewController.swift in Sources */,
+				7E4AFC13237AFE50001D5CB7 /* ProfileVC.swift in Sources */,
 				7E28B14D232E433600267171 /* SettingsVC.swift in Sources */,
 				7E28B0EC231D5AEF00267171 /* UpcomingVacationCell.swift in Sources */,
+				7E1E2136238A8A0B00A7262E /* PermissionTypes.swift in Sources */,
 				7E28B158232F560D00267171 /* UITextField.swift in Sources */,
 				7E725D392331163E00341B64 /* CheckinVC.swift in Sources */,
 				7E22067D2341EDF10000DAA8 /* PendingRequests.swift in Sources */,
 				7E28B0F4231EBB6E00267171 /* recentRequestEmpDetailsCell.swift in Sources */,
 				7ED3AE97230ABCFF0035CECA /* AppDelegate.swift in Sources */,
+				7E1E2138238A913600A7262E /* PermissionTypeCell.swift in Sources */,
 				7E28B0F0231E622E00267171 /* CVHeaderCVCell.swift in Sources */,
+				7E1E213A238A9E9800A7262E /* RequestPermissionVacationVC.swift in Sources */,
 				7E28B152232E747D00267171 /* LanguageManager.swift in Sources */,
+				7E4AFC0F23784202001D5CB7 /* PendingRequestsMenuItem.swift in Sources */,
 				7E725D372331152200341B64 /* CustomTitleView.swift in Sources */,
+				7E4AFC1D23816809001D5CB7 /* ProfileEmployeePendingRequestsCell.swift in Sources */,
 				7EA384D723338FB300E34F3D /* PermissionVC.swift in Sources */,
+				7E4AFC15237D65C5001D5CB7 /* PieChartCell.swift in Sources */,
 				7E55F22F236EC7C90045F69F /* UINavigationController.swift in Sources */,
 				7E7203F0231BD55B00D6BD99 /* HeaderLabel.swift in Sources */,
+				7E4AFC1123797F32001D5CB7 /* PermissionCell.swift in Sources */,
 				7E28B0F6231FE53C00267171 /* ListOfEmployeeController.swift in Sources */,
+				7EEEA8E223CD9E6C00305536 /* DecodableAttendance.swift in Sources */,
 				7E28B156232F552800267171 /* OverLay.swift in Sources */,
 				7E78478D23378AE5009E57A1 /* CalendarVC.swift in Sources */,
 				7E4AFBEF2377FE1E001D5CB7 /* PendingRequestsVC.swift in Sources */,
@@ -440,6 +502,8 @@
 				7E7203F2231BD7D900D6BD99 /* CircularPercentageRowCell.swift in Sources */,
 				7E28B0EE231D6A6400267171 /* ListOfEmployeesCell.swift in Sources */,
 				7E28B14F232E4DBB00267171 /* CustomSegmentedControl.swift in Sources */,
+				7E1E213C238AB26200A7262E /* BaseRequestsController.swift in Sources */,
+				7E4AFC0D23782883001D5CB7 /* MenuCell.swift in Sources */,
 				7E7203E2231A533400D6BD99 /* DashBoardVC.swift in Sources */,
 				7E7203E9231AD45600D6BD99 /* DashboardHeaderController.swift in Sources */,
 				7E28B11E2325567600267171 /* Constants.swift in Sources */,

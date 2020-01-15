@@ -9,8 +9,10 @@
 import UIKit
 class DashboardHeaderController: UIViewController {
     
+    var empstatistics:[TeamStatistics] = [TeamStatistics]()
+    
     let leftBGImage:UIImageView  = {
-       let image = UIImageView()
+        let image = UIImageView()
         image.image = #imageLiteral(resourceName: "HeaderSideImage")
         image.transform = getAppLanguage() == "ar" ?  CGAffineTransform(scaleX: -1, y: 1) : .identity
         return image
@@ -74,12 +76,54 @@ extension DashboardHeaderController:UICollectionViewDelegateFlowLayout,UICollect
 {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cvHeaderCVCell", for: indexPath) as! CVHeaderCVCell
-        cell.backgroundColor = indexPath.row % 2 == 0 ? .headerControllerOrange : .headerControlllerBlue
+        if indexPath.row == 0
+        {
+            cell.backgroundColor = .headerControllerOrange
+            
+            if let first = empstatistics.first
+            {
+                cell.activeEmployeesCount.text = "\(first.empCount ?? 0)"
+            }
+            else
+            {
+                cell.activeEmployeesCount.text = "0"
+            }
+            cell.activeEmployeesLabelImg.text = "Active\nEmployees";
+        }
+        else if indexPath.row == 1
+        {
+            cell.backgroundColor = .headerControlllerBlue
+            if let first = empstatistics.first
+            {
+                cell.activeEmployeesCount.text = "\(first.vacationCount ?? 0)"
+            }
+            else
+            {
+                cell.activeEmployeesCount.text = "0"
+            }
+            cell.activeIcon.isHidden  = true
+            cell.activeEmployeesLabelImg.text = "Vacation\nEmployees"
+
+        }
+        else
+        {
+            cell.backgroundColor = .redCircleText
+            if let first = empstatistics.first
+            {
+                cell.activeEmployeesCount.text = "\(first.absenceCount ?? 0)"
+            }
+            else
+            {
+                cell.activeEmployeesCount.text = "0"
+            }
+            cell.activeIcon.isHidden  = true
+            cell.activeEmployeesLabelImg.text = "Absent\nEmployees"
+        }
         cell.layer.cornerRadius = 20
         cell.clipsToBounds = true
         return cell
@@ -101,15 +145,15 @@ extension DashboardHeaderController:UICollectionViewDelegateFlowLayout,UICollect
         view.addSubview(collectionView)
         
         collectionView.register(CVHeaderCVCell.self, forCellWithReuseIdentifier: "cvHeaderCVCell")
-//        let width = view.frame.width
-
+        //        let width = view.frame.width
+        
         
         collectionView.anchorToView(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 145.36, left: 50, bottom: 160, right: 0))
         
         
         collectionView.anchorToView(size: .init(width:0, height: 238.93))
         
-//        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: width / 5).isActive = true
+        //        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: width / 5).isActive = true
         
         collectionView.showsHorizontalScrollIndicator = false
         

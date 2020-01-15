@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ProgressHUD
 class DashboardVC:BaseMenuVC {
     let flowLayout = UICollectionViewFlowLayout()
     
@@ -23,9 +24,83 @@ class DashboardVC:BaseMenuVC {
         adjustNavigationControllers()
         if Authenticate(animated: false)
         {
-            
         }
+        fetchData()
     }
+    
+    var empStatistics : [TeamStatistics] = [TeamStatistics]()
+    
+    fileprivate func fetchData()
+    {
+        let dispatchGroup:DispatchGroup = DispatchGroup()
+
+        if NewUser.getLocallySavedUser()?.role == "Manager"
+        {
+            let date = Date()
+            
+            let calendar = Calendar.current
+            let year = calendar.component(.year, from: date)
+            let month = calendar.component(.month, from: date)
+            let day = calendar.component(.day, from: date)
+            
+            ProgressHUD.show("Loading Data")
+            //let dispatchGroup:DispatchGroup = DispatchGroup()
+            //GET /api/Mobile/GetTeamAttendSummary
+            var finalURL1 = Utility.getFinalURL(methodName: "GetTeamAttendSummary")
+            //let parameters = ["fromDate":"1/1/2017","month":"1/1/2017","orgId":"1"];
+            //finalURL.append("?fromDate=\(7%2F1%2F2017)&month=\(7%2F1%2F2017)&orgId=\(1)")
+            
+            finalURL1.append("?fromDate=\(month)%2F\(day)%2F\(year)&toDate=\(month)%2F\(day)%2F\(year)")
+            let header = ["Authorization":"Bearer \(NewUser.getLocallySavedUser()?.token ?? "")","Content-Type":"application/json; charset=utf-8"]
+
+            //dispatchGroup.enter()
+            dispatchGroup.enter()
+            Service.shared.fetchGenericJSONData(urlString: finalURL1, parameters: nil, header: header) { (result:Array<TeamStatistics>?, err:Error?) in
+                dispatchGroup.leave()
+                if err != nil
+                {
+                    print(err!)
+                }
+                else
+                {
+                    if let res = result
+                    {
+                        self.empStatistics = res
+                    }
+                }
+                ProgressHUD.dismiss();
+            }
+            dispatchGroup.enter()
+            
+            //POST /api/Mobile/GetRequests
+            
+            var finalURL2 = Utility.getFinalURL(methodName: "GetRequests")
+            
+            Service.shared.fetchGenericJSONData(urlString: finalURL2, parameters: nil, header: header) { (result:Array<TeamStatistics>?, err:Error?) in
+                dispatchGroup.leave()
+                if err != nil
+                {
+                    print(err!)
+                }
+                else
+                {
+                    if let res = result
+                    {
+                        self.empStatistics = res
+                    }
+                }
+                ProgressHUD.dismiss();
+            }
+            
+            dispatchGroup.notify(queue: .main){
+                self.collectionView.collectionViewLayout.invalidateLayout()
+                self.collectionView.reloadData()
+            }
+
+        }
+        
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.collectionViewLayout.invalidateLayout()
@@ -39,26 +114,35 @@ extension DashboardVC:UICollectionViewDelegate,UICollectionViewDataSource,UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch indexPath.item {
-        case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "circularPercentageCell", for: indexPath) as! CircularPercentageRowCell
-            cell.backgroundColor = .dashboardGray
-            return cell
-        case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentRequestsCell", for: indexPath) as! RecentRequestsCell
-            cell.backgroundColor = .dashboardGray//UIColor(white: 0.95, alpha: 1)
-            return cell
-        case 3:
+        if NewUser.getLocallySavedUser()?.role  == "Manager"
+        {
+            switch indexPath.item {
+            case 0:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "circularPercentageCell", for: indexPath) as! CircularPercentageRowCell
+                cell.backgroundColor = .dashboardGray
+                return cell
+            case 1:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentRequestsCell", for: indexPath) as! RecentRequestsCell
+                cell.backgroundColor = .dashboardGray//UIColor(white: 0.95, alpha: 1)
+                return cell
+            case 3:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "upComingVacationCell", for: indexPath) as! UpComingVacationCell
+                cell.backgroundColor = .dashboardGray//.lightGray//UIColor(white: 0.95, alpha: 1)
+                return cell
+            case 4:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listOfEmployeesCell", for: indexPath) as! ListOfEmployeesCell
+                cell.backgroundColor = .white//UIColor(white: 0.95, alpha: 1)
+                return cell
+            default:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listOfEmployeesCell", for: indexPath)
+                cell.backgroundColor = .green
+                return cell
+            }
+        }
+        else
+        {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "upComingVacationCell", for: indexPath) as! UpComingVacationCell
             cell.backgroundColor = .dashboardGray//.lightGray//UIColor(white: 0.95, alpha: 1)
-            return cell
-        case 4:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listOfEmployeesCell", for: indexPath) as! ListOfEmployeesCell
-            cell.backgroundColor = .white//UIColor(white: 0.95, alpha: 1)
-            return cell
-        default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listOfEmployeesCell", for: indexPath)
-            cell.backgroundColor = .green
             return cell
         }
     }
@@ -89,6 +173,9 @@ extension DashboardVC:UICollectionViewDelegate,UICollectionViewDataSource,UIColl
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerID", for: indexPath) as! DashBoardHeader
+        
+        header.appHeaderHorizontalController.empstatistics = self.empStatistics
+        header.appHeaderHorizontalController.collectionView.reloadData()
         header.backgroundColor = UIColor.dashboardGray
         //header.backgroundColor =/ UIColor(red: 247/255, green: 246/255, blue: 255/255, alpha: 1)//.white
         return header

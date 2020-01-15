@@ -16,4 +16,7 @@ target 'CutsomProgrammaticMenu' do
    pod 'SwiftMessages'
    pod 'ProgressHUD' 
    pod 'FSCalendar'
+   pod 'Charts'
+  pod 'JWTDecode', '~> 2.4'
+
 end

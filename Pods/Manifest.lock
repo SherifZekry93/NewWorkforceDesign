@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.8.1)
+  - Charts (3.4.0):
+    - Charts/Core (= 3.4.0)
+  - Charts/Core (3.4.0)
   - FSCalendar (2.8.0)
   - GoogleMaps (3.0.3):
     - GoogleMaps/Maps (= 3.0.3)
@@ -9,8 +12,8 @@ PODS:
   - GooglePlaces (3.0.3):
     - GoogleMaps/Base (= 3.0.3)
   - IQKeyboardManager (6.2.0)
+  - JWTDecode (2.4.0)
   - MOLH (0.8)
-  - PageMenu (2.0.0)
   - ProgressHUD (2.60)
   - RevealingSplashView (0.6.0)
   - SwiftMessages (6.0.2):
@@ -20,12 +23,13 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - Charts
   - FSCalendar
   - GoogleMaps
   - GooglePlaces
   - IQKeyboardManager
+  - JWTDecode (~> 2.4)
   - MOLH
-  - PageMenu
   - ProgressHUD
   - RevealingSplashView
   - SwiftMessages
@@ -44,21 +48,23 @@ SPEC REPOS:
     - SwiftMessages
     - UICircularProgressRing
   trunk:
-    - PageMenu
+    - Charts
+    - JWTDecode
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
   FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
   GoogleMaps: fd5c9fa58871781b9fb94d4936f19c69fe60ce32
   GooglePlaces: f09e76993c9c3ee4af8f4f7f535bb94d6aa3b649
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
+  JWTDecode: 0930fb517c27bac2daef7cabc13577b18fdee0da
   MOLH: b9766efe89be975ce82a8d5642f681da23c876fc
-  PageMenu: 9c38fd7e0d9ef4b1408320f55bb907bbc0e538dc
   ProgressHUD: 4e4efbaf4f5de8bd32e0c4c3b6644a90ea1a8c3e
   RevealingSplashView: 40c5a770894459736acdc95655eeba0dd30ce91c
   SwiftMessages: 8b3cc68dba2f1c91aac1a74c90b10287aac35371
   UICircularProgressRing: 2ef1293241b83d8020ede21a8fe3b3d859525730
 
-PODFILE CHECKSUM: 1beee4b6bf074bacc8ddc569462ef25ecc1ae61f
+PODFILE CHECKSUM: 557e0ae7a5d503e499b43e11d1477cc738153eca
 
 COCOAPODS: 1.8.3

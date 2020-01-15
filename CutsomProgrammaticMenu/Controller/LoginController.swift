@@ -104,16 +104,18 @@ class LoginController: UIViewController {
     @objc func performLogin()
     {
         
-        UIView.animate(withDuration: 0.6,
-        animations: {
-            self.loginButton.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
-        },
-        completion: { _ in
-            UIView.animate(withDuration: 0.6) {
-                self.loginButton.transform = CGAffineTransform.identity
-                self.verifyUserInputs()
-            }
-        })
+        self.verifyUserInputs()
+//
+//        UIView.animate(withDuration: 0.6,
+//        animations: {
+//            self.loginButton.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+//        },
+//        completion: { _ in
+//            UIView.animate(withDuration: 0.6) {
+//                self.loginButton.transform = CGAffineTransform.identity
+//                self.verifyUserInputs()
+//            }
+//        })
 
     }
     
@@ -156,8 +158,9 @@ class LoginController: UIViewController {
     fileprivate func handleLogin(username:String,password:String)
     {
         ProgressHUD.show("Login")
-        let finalURL = Utility.getFinalURL(methodName: "AuthenticateUser",params:[username,password])        
-        Service.shared.fetchGenericJSONData(urlString: finalURL, parameters:nil) { (user:User?, err:Error?) in
+        let params:[String:Any] = ["username":username,"password":password]
+        let finalURL = Utility.getFinalURL(methodName: "login")
+        Service.shared.fetchGenericJSONData(methodType: .post, urlString: finalURL, parameters:params) { (user:NewUser?, err:Error?) in
             if err != nil
             {
                 ProgressHUD.dismiss()

@@ -24,9 +24,10 @@ extension UIColor
     static let redMessageColor = UIColor(red: 215, green: 7, blue: 1)
     static let calendarHeaderView = UIColor(red: 54, green: 56, blue: 71)
     static let permissionBGColor = UIColor(red: 245, green: 249, blue: 250)
+    static let lightSeparatorColor = UIColor(red: 240, green: 240, blue: 240)
     static let aboutTextColor = UIColor(red: 117, green: 125, blue: 128)
     static let greenMessageColor = UIColor(red: 8, green: 171, blue: 8)
-    
+    static let chartGreen = UIColor(red: 48, green: 220, blue: 48)
     convenience init(red: CGFloat, green: CGFloat, blue: CGFloat) {
         self.init(red: red/255, green: green/255, blue: blue/255, alpha: 1)
     }

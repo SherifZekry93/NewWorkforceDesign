@@ -54,7 +54,7 @@ extension UIViewController
     }
     func Authenticate(animated:Bool = true) -> Bool
     {
-        if User.getLocallySavedUser() == nil
+        if NewUser.getLocallySavedUser() == nil
         {
             let setting = UINavigationController(rootViewController: SettingsVC())
             setting.modalPresentationStyle = .fullScreen

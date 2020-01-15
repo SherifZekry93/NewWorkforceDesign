@@ -9,9 +9,23 @@
 import UIKit
 
 import FSCalendar
-
+import ProgressHUD
 class CalendarVC:BaseMenuVC
 {
+    fileprivate var timer:Timer?
+
+    fileprivate let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        return formatter
+    }()
+    
+    fileprivate let secondFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        return formatter
+    }()
+
     let calendar:FSCalendar = {
         let ca = FSCalendar()
         return ca
@@ -45,7 +59,7 @@ class CalendarVC:BaseMenuVC
             
             secondStack
             
-        ], axis: .vertical, spacing: 12,alignment:.center)
+        ], axis: .vertical, spacing: 20,alignment:.center)
         
         stack.distribution = .fillEqually
         
@@ -61,7 +75,9 @@ class CalendarVC:BaseMenuVC
     }()
     
     override func viewDidLoad() {
-        
+        calendar.delegate = self
+        calendar.dataSource = self
+
         super.viewDidLoad()
         
         setupTitleView(title: "calendar", comparedTo: darkFillView)
@@ -73,6 +89,8 @@ class CalendarVC:BaseMenuVC
         setTitleLabel()
         
         setupStatisticsView()
+        calendarOpenerView.isUserInteractionEnabled = false
+        getCurrentEmployeeAttendance()
     }
     private func setTitleLabel()
     {
@@ -97,9 +115,7 @@ class CalendarVC:BaseMenuVC
         else
         {
             formatter.dateFormat = "yyyy\ndd MMMM , EEEE"
-            
             let currentDateString: String = formatter.string(from: inputDateAsString)
-            
             calendarHeaderLabel.text = currentDateString
         }
         calendarHeaderLabel.font = UIFont(name: "Raleway-SemiBold", size: 15)
@@ -115,7 +131,7 @@ class CalendarVC:BaseMenuVC
     private func setupCalendar()
     {
         view.insertSubview(calendar, belowSubview: darkFillView)
-        calendar.anchorToView(top: dummyHeaderView.bottomAnchor, leading: dummyHeaderView.leadingAnchor, bottom: nil, trailing: dummyHeaderView.trailingAnchor,padding: .init(top: 0, left: 10, bottom: 0, right: 10),size:.init(width: 0, height: 500))
+        calendar.anchorToView(top: dummyHeaderView.bottomAnchor, leading: dummyHeaderView.leadingAnchor, bottom: nil, trailing: dummyHeaderView.trailingAnchor,padding: .init(top: 0, left: 10, bottom: 0, right: 10),size:.init(width: 0, height: view.frame.height / 2))
         self.calendar.calendarWeekdayView.backgroundColor = .calendarHeaderView
         self.calendar.calendarWeekdayView.layer.cornerRadius = 20
         calendar.appearance.weekdayTextColor = .white
@@ -125,19 +141,19 @@ class CalendarVC:BaseMenuVC
     private func setupStatisticsView()
     {
         view.insertSubview(calendarStatisticsView, belowSubview: darkFillView)
-        calendarStatisticsView.anchorToView(top: calendar.bottomAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor,padding: .init(top: 0, left: 0, bottom: 50, right: 0))
+        calendarStatisticsView.anchorToView(top: calendar.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,size: .init(width: 0, height: (view.frame.height / 2 ) - 250))
     }
     private func getStackStatistics(txtColor:UIColor,statString:String,statNumber:String) -> UIView
     {
         let statLabel = UILabel()
         
-        let attributed = NSMutableAttributedString(string: "• ", attributes: [
+        let attributed = NSMutableAttributedString(string: "•", attributes: [
             NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize:  30),
             NSAttributedString.Key.foregroundColor:txtColor
         ])
         
         attributed.append(NSAttributedString(string: "\(statString)\n", attributes: [
-            NSAttributedString.Key.font:UIFont.systemFont(ofSize: 20),
+            NSAttributedString.Key.font:UIFont.systemFont(ofSize: 18),
             NSAttributedString.Key.foregroundColor:UIColor.headerLabelColor
         ]))
         
@@ -156,4 +172,153 @@ class CalendarVC:BaseMenuVC
         
         return statLabel
     }
+    var absecntDays:[String] = [String]()
+    var weekEndDays:[String] = [String]()
+    var privateHoliday:[String] = [String]()
+    var publicHoliday:[String] = [String]()
+    var attendedDays:[String] = [String]()
+    fileprivate func getCurrentEmployeeAttendance()
+    {
+        ProgressHUD.show()
+        self.absecntDays.removeAll()
+        self.weekEndDays.removeAll()
+        self.privateHoliday.removeAll()
+        self.publicHoliday.removeAll()
+        self.attendedDays.removeAll()
+        let currentPageDate = calendar.currentPage
+        
+        
+        let month = Calendar.current.component(.month, from: currentPageDate)
+        
+        let year = Calendar.current.component(.year, from: currentPageDate)
+         do
+        {
+            var finalURL = Utility.getFinalURL(methodName: "GetEmpAttendCalender")
+            finalURL.append("?empId=\(1)&month=\(month)&year=\(year)")
+            let header = ["Authorization":"Bearer \(NewUser.getLocallySavedUser()?.token ?? "")","Content-Type":"application/json; charset=utf-8"]
+            Service.shared.fetchGenericJSONData(urlString: finalURL, parameters: nil, header: header) { (result:Array<NewAttendance>?, err:Error?) in
+            //print(result)
+
+            if err != nil && result != nil
+            {
+                ProgressHUD.showError(err?.localizedDescription ?? "")
+                return
+            }
+            print(result)
+            result?.forEach({ (attend) in
+
+                let dateFormatter = DateFormatter()
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                if let date = dateFormatter.date(from: attend.transactionDate ?? "")
+                {
+                    let newDate = self.formatter.string(from: date)
+                    print(newDate)
+                    
+                    if attend.statusId == 103
+                    {
+                        self.absecntDays.append(newDate)
+                    }
+                    else if attend.statusId == 110
+                    {
+                        self.weekEndDays.append(newDate)
+                    }
+                    else if attend.statusId == 104
+                    {
+                        self.privateHoliday.append(newDate)
+                    }
+                    else if attend.statusId == 105
+                    {
+                        self.publicHoliday.append(newDate)
+                    }
+                    else
+                    {
+                        self.attendedDays.append(newDate)
+                    }
+
+                }
+            })
+                
+            DispatchQueue.main.async {
+                self.calendar.reloadData()
+                ProgressHUD.dismiss()
+            }
+        }
+           }
+           catch let err
+          {
+              ProgressHUD.showError(err.localizedDescription)
+              return
+         }
+    }
+
+}
+extension CalendarVC:FSCalendarDataSource, FSCalendarDelegate,FSCalendarDelegateAppearance
+{
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
+        let dateString : String = formatter.string(from:date)
+        print(absecntDays)
+        print(dateString)
+        
+        if absecntDays.contains(dateString)
+        {
+            return UIColor.red
+        }
+        else if weekEndDays.contains(dateString)
+        {
+            return UIColor.blue
+        }
+        else if privateHoliday.contains(dateString)
+        {
+            return UIColor(red: 204/255, green: 204/255, blue: 0/255, alpha: 1)
+        }
+        else if publicHoliday.contains(dateString)
+        {
+            return .purple
+        }
+        else if attendedDays.contains(dateString)
+        {
+            return UIColor(red: 0/255, green: 100/255, blue: 0/255, alpha: 1)
+        }
+        else{
+            return nil
+        }
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+        let dateString : String = formatter.string(from:date)
+        print(dateString)
+        print(absecntDays)
+        if absecntDays.contains(dateString)
+        {
+            return .white
+        }
+        else if weekEndDays.contains(dateString)
+        {
+            return .white
+        }
+        else if privateHoliday.contains(dateString)
+        {
+            return .white
+        }
+        else if publicHoliday.contains(dateString)
+        {
+            return .white
+        }
+        else if attendedDays.contains(dateString)
+        {
+            return .white
+        }
+        else{
+            return nil
+        }
+    }
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        ProgressHUD.show("Loading Attendance")
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: {[weak self] (_) in
+            self?.getCurrentEmployeeAttendance()
+        })
+    }
+
 }

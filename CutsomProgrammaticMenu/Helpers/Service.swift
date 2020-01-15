@@ -12,12 +12,11 @@ import Alamofire
 class Service {
     static let shared = Service()//singleton
     
-    func fetchGenericJSONData<T:Decodable>(urlString:String,parameters:Parameters?,completion:@escaping (T?,Error?) -> ())
+    func fetchGenericJSONData<T:Decodable>(methodType:HTTPMethod = .get,urlString:String,parameters:Parameters?,header:HTTPHeaders? = nil,completion:@escaping (T?,Error?) -> ())
     {
         
         guard let actual_url = URL(string: urlString) else {return}
-        
-        Alamofire.request(actual_url, method: .get, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+        Alamofire.request(actual_url, method: methodType, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
             do
             {
                 if let data = response.data
@@ -25,6 +24,9 @@ class Service {
                     let feeds = try JSONDecoder().decode(T.self, from: data)
                     if response.result.isSuccess && response.error == nil
                     {
+                        
+                        print(feeds)
+                        
                         completion(feeds,nil)
                     }
                     else
@@ -36,6 +38,7 @@ class Service {
             }
             catch let err
             {
+                
                 completion(nil,err)
             }
         }

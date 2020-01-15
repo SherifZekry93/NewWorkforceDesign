@@ -13,9 +13,10 @@ struct Utility {
         //http://104.43.140.185/TMSBusinessWS
         var finalURL = UserDefaults.standard.value(forKey: BASE_URL_KEY) as! String
         finalURL.append("/")
-        finalURL.append("BusinessWS.svc")
-        finalURL.append("/")
+//        finalURL.append("BusinessWS.svc")
+//        finalURL.append("/")
         finalURL.append(methodName)
+        
         print(finalURL)
         if !params.isEmpty
         {

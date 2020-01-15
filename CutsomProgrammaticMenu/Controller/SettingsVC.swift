@@ -7,7 +7,10 @@
 //
 
 import UIKit
+
 import MOLH
+
+
 class SettingsVC: UIViewController {
     
     let languageSegmentedControl:CustomSegmentedControl = {
@@ -29,6 +32,7 @@ class SettingsVC: UIViewController {
         text.textColor = .white
         text.keyboardType = UIKeyboardType.URL
         text.setAttributedPlaceHolder(text: "Base URL".localized())
+        text.text = "http://40.113.242.147/ASIS.TMS.MobileAPI/api/Mobile";
         return text
     }()
     

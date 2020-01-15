@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Charts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FSCalendar.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -29,12 +34,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>MOLH.xcscheme</key>
+		<key>JWTDecode.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>PageMenu.xcscheme</key>
+		<key>MOLH.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
